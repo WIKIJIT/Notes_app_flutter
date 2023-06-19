@@ -6,4 +6,6 @@ class Note {
     required this.id,
     required this.text,
   });
+
+  get length => null;
 }

@@ -62,42 +62,44 @@ class _HomePageState extends State<HomePage> {
             color: Colors.grey,
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //heading
-            const Padding(
-              padding: EdgeInsets.only(left: 25.0, top: 75.0),
-              child: Text(
-                'Notes',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //heading
+              const Padding(
+                padding: EdgeInsets.only(left: 25.0, top: 75.0),
+                child: Text(
+                  'Notes',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
 
-            //list of notes
-            value.getAllNotes().length == 0
-                ? Padding(
-                    padding: const EdgeInsets.only(top: 50.0),
-                    child: Center(
-                      child: Text(
-                        'Nothing Here...',
-                        style: TextStyle(color: Colors.grey[400]),
-                      ),
-                    ))
-                : CupertinoListSection.insetGrouped(
-                    children: List.generate(
-                        value.getAllNotes().length,
-                        (index) => CupertinoListTile(
-                              title: Text(value.getAllNotes()[index].text),
-                              onTap: () => goToNotePage(
-                                  value.getAllNotes()[index], false),
-                              trailing: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () =>
-                                    deleteNote(value.getAllNotes()[index]),
-                              ),
-                            ))),
-          ],
+              //list of notes
+              value.getAllNotes().length == 0
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 50.0),
+                      child: Center(
+                        child: Text(
+                          'Nothing Here...',
+                          style: TextStyle(color: Colors.grey[400]),
+                        ),
+                      ))
+                  : CupertinoListSection.insetGrouped(
+                      children: List.generate(
+                          value.getAllNotes().length,
+                          (index) => CupertinoListTile(
+                                title: Text(value.getAllNotes()[index].text),
+                                onTap: () => goToNotePage(
+                                    value.getAllNotes()[index], false),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () =>
+                                      deleteNote(value.getAllNotes()[index]),
+                                ),
+                              ))),
+            ],
+          ),
         ),
       ),
     );
