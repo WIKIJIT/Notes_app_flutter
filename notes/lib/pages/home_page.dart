@@ -96,8 +96,41 @@ class _HomePageState extends State<HomePage> {
                                     value.getAllNotes()[index], false),
                                 trailing: IconButton(
                                   icon: Icon(Icons.delete),
-                                  onPressed: () =>
-                                      deleteNote(value.getAllNotes()[index]),
+                                  onPressed: () => showCupertinoDialog(
+                                      context: context,
+                                      builder: (BuildContext ctx) {
+                                        return CupertinoAlertDialog(
+                                          title: const Text('Please Confirm'),
+                                          content: const Text(
+                                              'Are you sure to remove the text?'),
+                                          actions: [
+                                            // The "Yes" button
+                                            CupertinoDialogAction(
+                                              onPressed: () {
+                                                setState(() {
+                                                  //_isShown = false;
+                                                  deleteNote(value
+                                                      .getAllNotes()[index]);
+                                                  Navigator.of(context).pop();
+                                                });
+                                              },
+                                              isDefaultAction: true,
+                                              isDestructiveAction: true,
+                                              child: const Text('Yes'),
+                                            ),
+                                            // The "No" button
+                                            CupertinoDialogAction(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              isDefaultAction: false,
+                                              isDestructiveAction: false,
+                                              child: const Text('No'),
+                                            )
+                                          ],
+                                        );
+                                      }),
+                                  //deleteNote(value.getAllNotes()[index]),
                                 ),
                               ))),
             ],
