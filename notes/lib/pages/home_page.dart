@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                                         return CupertinoAlertDialog(
                                           title: const Text('Please Confirm'),
                                           content: const Text(
-                                              'Are you sure to remove the text?'),
+                                              'Are you sure you want to Delete the note?'),
                                           actions: [
                                             // The "Yes" button
                                             CupertinoDialogAction(
