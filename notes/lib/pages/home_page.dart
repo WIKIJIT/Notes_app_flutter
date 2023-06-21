@@ -53,9 +53,10 @@ class _HomePageState extends State<HomePage> {
     return Consumer<NoteData>(
       builder: (context, value, child) => Scaffold(
         backgroundColor: CupertinoColors.systemGroupedBackground,
+        //floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
         floatingActionButton: FloatingActionButton(
           onPressed: createNewNote,
-          elevation: 0,
+          elevation: 50,
           backgroundColor: Colors.grey[300],
           child: const Icon(
             Icons.add,
@@ -63,6 +64,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 70),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
